@@ -2,7 +2,7 @@
 
 % NCNM
 
-% Relies on NCNM toolbox vs 0.1 and IVM toolbox vs 0.23.
+% Relies on NCNM toolbox vs 0.1 and IVM toolbox vs 0.23 and Anton Schwaighofer's svm light matlab interface.
 %/~
 importTool('ivm');
 importTool('svml');
