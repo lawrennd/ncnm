@@ -36,25 +36,25 @@ prior.index = 2;
 model.kern.comp{1}.priors(1) = prior;
 prior.index = 1;
 model.kern.comp{2}.priors(1) = prior;
+if display > 1
+  ivm3dPlot(model, 'ncnmContour', i); %incnmTwoDPlot(model, i);
+end
 for i = 1:15
-
+  
   % Plot the data.
-  if display > 1
-    ncnmTwoDPlot(model, i);
-  end
   % Select the active set.
   model = ivmOptimiseIVM(model, display);
+  if display > 1
+    ivm3dPlot(model, 'ncnmContour', i); %incnmTwoDPlot(model, i);
+  end
   % Optimise the kernel parameters.
   model = ivmOptimiseKernel(model, 0, display, 100);
-  if display > 1
-    ncnmTwoDPlot(model, i);
-  end
   ivmDisplay(model);
 
 end
 model = ivmOptimiseIVM(model, display);
 if display > 1
-  ncnmTwoDPlot(model, i);
+  ivm3dPlot(model, 'ncnmContour', i); %incnmTwoDPlot(model, i);
 end
 model = ivmOptimiseIVM(model, display);
 % Display the final model.
