@@ -19,10 +19,10 @@ else
   noise.gamman = 0.5;
   noise.gammap = 0.5;
 end
-noise.nParams = noise.numProcess;
+noise.nParams = noise.numProcess+2;
 
 % Constrain noise.prior to be between 0 and 1.
-noise.transforms.index = [noise.numProcess+1];% noise.numProcess+2];
+noise.transforms.index = [noise.numProcess+1 noise.numProcess+2];
 noise.transforms.type = 'sigmoid';
 
 % This isn't optimised, it sets the gradient of the erf.

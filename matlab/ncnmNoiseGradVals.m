@@ -10,7 +10,7 @@ for i = 1:D
 end
 c = 1./sqrt(noise.sigma2 + varsigma);
 fact = sqrt(2)/2;
-
+epsilon = eps;
 % Missing values are left untouched at zero.
 dlnZ_dmu = zeros(size(c));
 dlnZ_dvs = zeros(size(c));
@@ -30,9 +30,11 @@ for j = 1:D
     mu(index, j) = mu(index, j) + noise.width/2;
     u = mu(index, j).*c(index, j);
     uprime = (mu(index, j)-noise.width).*c(index, j);
-    denom = noise.gamman*cumGaussian(-u)+noise.gammap*cumGaussian(uprime);
-    B1 = noise.gamman*ngaussian(u)./denom;
-    B2 = noise.gammap*ngaussian(uprime)./denom;
+    lndenom = lnCumGaussSum(-u, uprime, noise.gamman, noise.gammap);
+    lnNumer1 = log(noise.gamman) -.5*log(2*pi) -.5*(u.*u);
+    lnNumer2 = log(noise.gammap) -.5*log(2*pi) -.5*(uprime.*uprime);
+    B1 = exp(lnNumer1 - lndenom);
+    B2 = exp(lnNumer2 - lndenom);
     dlnZ_dmu(index, j) = c(index, j).*(B2 - B1);
     dlnZ_dvs(index, j) = -.5*c(index, j).*c(index, j).*(uprime.*B2-u.*B1);
   end

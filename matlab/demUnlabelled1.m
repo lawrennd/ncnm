@@ -1,9 +1,10 @@
 % DEMUNLABELLED1 Test IVM code on a toy feature selection
 
-% NCNM
+% NCNM 
 
+% Relies on IVM toolbox vs 0.23.
 %/~
-importTool('ivm', 0.221);
+importTool('ivm');
 %~/
 
 randn('seed', 1e6)
@@ -33,7 +34,8 @@ prior.a = 1;
 prior.b = 1;
 prior.index = 2;
 model.kern.comp{1}.priors(1) = prior;
-
+prior.index = 1;
+model.kern.comp{2}.priors(1) = prior;
 for i = 1:15
 
   % Plot the data.
@@ -47,12 +49,10 @@ for i = 1:15
   if display > 1
     ncnmTwoDPlot(model, i);
   end
-  % Select the active set.
-  model = ivmOptimiseIVM(model, display);
-  % Optimise the noise model parameters.
-  model = ivmOptimiseNoise(model, 0, display, 100);
+  ivmDisplay(model);
 
 end
+model = ivmOptimiseIVM(model, display);
 if display > 1
   ncnmTwoDPlot(model, i);
 end

@@ -1,7 +1,5 @@
 % DEMUNLABELLED2 Test IVM code on a toy feature selection
 
-% NCNM
-
 %/~
 importTool('ivm', 0.221);
 %~/
@@ -13,7 +11,7 @@ rand('seed', 1e6)
 X = [randn(100,2)-[zeros(100, 1) 6*ones(100, 1)]; randn(100,2)+[zeros(100, 1) 6*ones(100, 1)]; randn(100, 2)];
 y = [ones(200, 1); -ones(100, 1)];
 unlab = 1:300;
-unlab([1 101 201]) = [];
+unlab([1 11 101 111 201 211]) = [];
 y(unlab) = NaN;
 % The probit is a classification noise model.
 noiseModel = 'ncnm'; 
@@ -35,7 +33,7 @@ prior.b = 1;
 prior.index = 2;
 model.kern.comp{1}.priors(1) = prior;
 
-for i = 1:15
+for i = 1:5
 
   % Plot the data.
   if display > 1
@@ -44,14 +42,14 @@ for i = 1:15
   % Select the active set.
   model = ivmOptimiseIVM(model, display);
   % Optimise the kernel parameters.
-  model = ivmOptimiseKernel(model, prior, display, 100);
+  model = ivmOptimiseKernel(model, 0, display, 100);
   if display > 1
     ncnmTwoDPlot(model, i);
   end
   % Select the active set.
   model = ivmOptimiseIVM(model, display);
   % Optimise the noise model parameters.
-  model = ivmOptimiseNoise(model, prior, display, 100);
+  model = ivmOptimiseNoise(model, 0, display, 100);
 
 end
 if display > 1

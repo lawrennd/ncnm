@@ -12,6 +12,7 @@ c = 1./sqrt(noise.sigma2 + varsigma);
 gnoise.bias = zeros(1, D);
 gnoise.gammap = 0;
 gnoise.gamman = 0;
+epsilon = eps;
 for j = 1:D
   % Do negative category first.
   index = find(y(:, j)==-1);
@@ -28,12 +29,14 @@ for j = 1:D
     mu(index, j) = mu(index, j) + noise.width/2;
     u = mu(index, j).*c(index, j);
     uprime = (mu(index, j) - noise.width).*c(index, j);
-    denom = noise.gamman*cumGaussian(-u)+noise.gammap*cumGaussian(uprime);
-    B1 = noise.gamman*ngaussian(u)./denom;
-    B2 = noise.gammap*ngaussian(uprime)./denom;
+    lndenom = lnCumGaussSum(-u, uprime, noise.gamman, noise.gammap);
+    lnNumer1 = log(noise.gamman) -.5*log(2*pi) -.5*(u.*u);
+    lnNumer2 = log(noise.gammap) -.5*log(2*pi) -.5*(uprime.*uprime);
+    B1 = exp(lnNumer1 - lndenom);
+    B2 = exp(lnNumer2 - lndenom);
     gnoise.bias(j) = gnoise.bias(j) + sum(c(index, j).*(B2-B1));
-    gnoise.gammap = gnoise.gammap + sum((cumGaussian(uprime))./denom);
-    gnoise.gamman = gnoise.gamman + sum((cumGaussian(-u))./denom);
+    gnoise.gammap = gnoise.gammap + sum(exp(lnCumGaussian(uprime) -lndenom));
+    gnoise.gamman = gnoise.gamman + sum(exp(lnCumGaussian(-u) - lndenom));
   end
   
   % Highest category
@@ -47,5 +50,5 @@ for j = 1:D
     gnoise.gammap = gnoise.gammap - length(index)/(1-noise.gammap);
   end
 end
-g = [gnoise.bias gnoise.gamman(:)'+gnoise.gammap(:)'];
+g = [gnoise.bias gnoise.gamman(:)' gnoise.gammap(:)'];
 %g = [gnoise.bias 0];

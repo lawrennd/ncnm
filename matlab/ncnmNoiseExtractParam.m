@@ -4,12 +4,12 @@ function [params, names] = ncnmNoiseExtractParam(noise)
 
 % NCNM
 
-params = [noise.bias noise.gamman];
+params = [noise.bias noise.gamman noise.gammap];
 
 if nargout > 1
   for i = 1:noise.numProcess
     names{i} = ['bias ' num2str(i)];
   end
-  names{noise.numProcess+1} = ['Gamma'];
-%  names{noise.numProcess+2} = ['Gamma +'];
+  names{noise.numProcess+1} = ['Gamma -'];
+  names{noise.numProcess+2} = ['Gamma +'];
 end

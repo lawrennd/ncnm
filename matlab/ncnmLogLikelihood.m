@@ -12,6 +12,7 @@ end
 L = 0;
 fact = sqrt(2)/2;
 c = 1./sqrt(noise.sigma2 + varsigma);
+epsilon = eps;
 for j = 1:D
   % Do negative class first.
   index = find(y(:, j) == -1);
@@ -28,8 +29,7 @@ for j = 1:D
     mu(index, j) = mu(index, j) + noise.width/2;
     u = mu(index, j).*c(index, j);
     uprime = (mu(index, j) - noise.width).* c(index, j); 
-    L = L + sum(log(noise.gamman*cumGaussian(-u) ...
-	+ noise.gammap*cumGaussian(uprime)));
+    L = L + sum(logCumGaussSum(-u, uprime, noise.gamman, noise.gammap));
   end
   % The positive class.
   index = find(y(:, j) == 1);

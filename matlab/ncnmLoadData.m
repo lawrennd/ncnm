@@ -45,7 +45,7 @@ switch dataset
    y = (y == classTrue)*2 - 1;
    yTest = (yTest == classTrue)*2 - 1;
  case 'thorsten'
-  [y, X] = svmlread('c:\datasets\thorsten\example2\train_transduction.dat');
-  [yTest, XTest] = svmlread('c:\datasets\thorsten\example2\test.dat');
+  [y, X] = svmlread('../data/example2/train_transduction.dat');
+  [yTest, XTest] = svmlread('../data/example2/test.dat');
 
 end
