@@ -48,7 +48,7 @@ for i = 1:15
     ivm3dPlot(model, 'ncnmContour', i); %incnmTwoDPlot(model, i);
   end
   % Optimise the kernel parameters.
-  model = ivmOptimiseKernel(model, 0, display, 100);
+  model = ivmOptimiseKernel(model, display, 100);
   ivmDisplay(model);
 
 end
