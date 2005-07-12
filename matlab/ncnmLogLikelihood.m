@@ -10,9 +10,7 @@ for i = 1:D
 end
 
 L = 0;
-fact = sqrt(2)/2;
 c = 1./sqrt(noise.sigma2 + varsigma);
-epsilon = eps;
 for j = 1:D
   % Do negative class first.
   index = find(y(:, j) == -1);

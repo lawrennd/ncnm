@@ -1,11 +1,19 @@
-function [y, X, yTest, XTest] = ncnmLoadData(dataset)
+function [X, y, XTest, yTest] = ncnmLoadData(dataSet,seedVal)
 
 % NCNMLOADDATA Load a dataset.
 
 % NCNM
 
-
-switch dataset
+if nargin < 2
+  seedVal = 1e5;
+end
+randn('seed', seedVal)
+rand('seed', seedVal)
+XTest = [];
+yTest = [];
+[dataSetStub, prob] = strtok(dataSet, '_');
+prob = str2num(prob(2:end));
+switch dataSetStub
   case 'threeFive'
    
    load ../data/usps_train
@@ -48,4 +56,44 @@ switch dataset
   [y, X] = svmlread('../data/example2/train_transduction.dat');
   [yTest, XTest] = svmlread('../data/example2/test.dat');
 
+ case 'usps'
+  load ../data/usps_train
+  X = ALL_DATA;
+  range =  min(ALL_T):max(ALL_T);
+  for i = 1:length(range)
+    y(:, i) = (ALL_T == range(i))*2 - 1;
+  end
+  if nargout > 2
+    load ../data/usps_test
+    XTest = ALL_DATA;
+    range =  min(ALL_T):max(ALL_T);
+    for i = 1:length(range)
+      yTest(:, i) = (ALL_T == range(i))*2 - 1;
+    end
+  end
+  indUnlabelled = find(rand(size(y, 1)>prob));
+  y(indUnlabelled, :) = NaN;
+ case {'usps0', 'usps1', 'usps2', 'usps3', 'usps4', 'usps5', 'usps6', 'usps7', 'usps8', 'usps9'}
+  digitNo = str2num(dataSetStub(end));
+  load ../data/usps_train
+  X = ALL_DATA;
+  range =  min(ALL_T):max(ALL_T);
+  for i = 1:length(range)
+    y(:, i) = (ALL_T == range(i))*2 - 1;
+  end
+  if nargout > 2
+    load ../data/usps_test
+    XTest = ALL_DATA;
+    range =  min(ALL_T):max(ALL_T);
+    for i = 1:length(range)
+      yTest(:, i) = (ALL_T == range(i))*2 - 1;
+    end
+  end
+  y = y(:, digitNo+1);
+  indUnlabelled = find(rand(size(y, 1), 1)>prob);
+  y(indUnlabelled, :) = NaN;
+  if nargout>2
+    yTest = yTest(:, digitNo+1);
+  end
+       
 end

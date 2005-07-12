@@ -10,7 +10,7 @@ for i = 1:D
 end
 
 
-c = 1./sqrt(noise.variance + varsigma);
+c = 1./sqrt(noise.sigma2 + varsigma);
 for j = 1:D
   % Negatively labelled data.
   index = find(y(:, j) == -1);

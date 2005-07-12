@@ -10,10 +10,12 @@ noise.logconcave = 0;
 if nargin > 1
   nClass1 = sum(y==1, 1);
   nClass2 = sum(y==-1, 1);
+  totClass = nClass1 + nClass2;
+  p1 = nClass1./totClass;
   noise.numProcess = size(y, 2);
   noise.gamman = sum(isnan(y))/length(y);
-  noise.gammap = sum(isnan(y))/length(y);
-  noise.bias = 0;
+  noise.gammap = noise.gamman;
+  noise.bias = invCumGaussian(p1);
 else
   noise.bias = zeros(1, noise.numProcess);
   noise.gamman = 0.5;
