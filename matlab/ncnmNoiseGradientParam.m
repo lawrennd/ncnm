@@ -50,5 +50,9 @@ for j = 1:D
     gnoise.gammap = gnoise.gammap - length(index)/(1-noise.gammap);
   end
 end
-g = [gnoise.bias gnoise.gamman(:)' gnoise.gammap(:)'];
+if noise.gammaSplit
+  g = [gnoise.bias gnoise.gamman(:)' gnoise.gammap(:)'];
+else
+  g = [gnoise.bias gnoise.gamman(:)' + gnoise.gammap(:)'];
+end
 %g = [gnoise.bias 0];

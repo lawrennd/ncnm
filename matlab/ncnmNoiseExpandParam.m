@@ -7,4 +7,9 @@ function noise = ncnmNoiseExpandParam(noise, params)
 
 noise.bias = params(1:noise.numProcess);
 noise.gamman = params(noise.numProcess+1);
-noise.gammap = params(noise.numProcess+2);
+if noise.gammaSplit
+  noise.gammap = params(noise.numProcess+2);
+else
+  noise.gammap = noise.gamman;
+end
+

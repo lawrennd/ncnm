@@ -4,7 +4,12 @@ function [params, names] = ncnmNoiseExtractParam(noise)
 
 % NCNM
 
-params = [noise.bias noise.gamman noise.gammap];
+if noise.gammaSplit
+  params = [noise.bias noise.gamman noise.gammap];
+else
+  params = [noise.bias noise.gamman];
+end
+  
 
 if nargout > 1
   for i = 1:noise.numProcess

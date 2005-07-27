@@ -6,6 +6,7 @@ function noise = ncnmNoiseParamInit(noise, y)
 
 % The likelihood is not log concave.
 noise.logconcave = 0;
+noise.gammaSplit = 0;
 
 if nargin > 1
   nClass1 = sum(y==1, 1);
@@ -21,10 +22,18 @@ else
   noise.gamman = 0.5;
   noise.gammap = 0.5;
 end
-noise.nParams = noise.numProcess+2;
+if noise.gammaSplit
+  noise.nParams = noise.numProcess+2;
+else
+  noise.nParams = noise.numProcess+1;
+end
 
 % Constrain noise.prior to be between 0 and 1.
-noise.transforms.index = [noise.numProcess+1 noise.numProcess+2];
+if noise.gammaSplit
+  noise.transforms.index = [noise.numProcess+1 noise.numProcess+2];
+else
+  noise.transforms.index = [noise.numProcess+1];
+end
 noise.transforms.type = 'sigmoid';
 
 % This isn't optimised, it sets the gradient of the erf.
@@ -32,5 +41,4 @@ noise.sigma2 = eps;
 
 % Can handle missing values?
 noise.missing = 1;
-
 noise.width = 1;
