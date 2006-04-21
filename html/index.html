@@ -1,0 +1,85 @@
+<html>
+
+<head>
+<title>Null Category Noise Model - MATLAB Software</title>
+</head>
+
+<body>
+
+<h1>NCNM Software</h1>
+
+This page will describe examples of how to use the null category noise model software (NCNM) available for <a href="http://ext.dcs.shef.ac.uk/~u0015/cgi-bin/downloadForm.cgi?toolbox=ncnm">download here</a>. 
+
+Note that there is a C++ version of the NCNM available within the IVM C++ toolbox available <a href="http://ext.dcs.shef.ac.uk/~u0015/cgi-bin/downloadForm.cgi?toolbox=ivmcpp">here</a>.
+
+<h3>Release Information</h3>
+
+<p>Current release is 0.11. 
+
+<p>There are several other toolboxes you need to download and have in your path these are:</p>
+
+<table>
+  <tr>
+    <td width="65%"><b>Toolbox</b></td>
+    <td width="35%"><b>Version</b></td>
+  </tr>
+  <tr>
+    <td width="65%">
+
+<p align="left"><a href="http://www.dcs.shef.ac.uk/~neil/kern/downloadFiles">IVM</a><br>
+<a href="http://www.dcs.shef.ac.uk/~neil/kern/downloadFiles">KERN</a><br>
+<a href="http://www.dcs.shef.ac.uk/~neil/noise/downloadFiles">NOISE</a><br>
+<a href="http://www.dcs.shef.ac.uk/~neil/ndlutil/downloadFiles">NDLUTIL</a><br>
+<a href="http://www.dcs.shef.ac.uk/~neil/optimi/downloadFiles">OPTIMI</a><br>
+<a href="http://www.dcs.shef.ac.uk/~neil/prior/downloadFiles">PRIOR</a><br>
+<a href="http://www.dcs.shef.ac.uk/~neil/datasets/downloadFiles">DATASETS</a></p>
+
+    </td>
+    <td width="35%">
+
+<p align="center">0.33<br>
+0.141<br>
+0.13<br>
+0.141<br>
+0.13<br>
+0.13<br>
+0.1</p>
+
+    </td>
+  </tr>
+</table>
+
+<p>Finally you will also need the <a href="http://www.ncrg.aston.ac.uk/netlab/index.php">NETLAB toolbox</a> in your path and Anton Schwaighofer's SVM light MATLAB interface, available <a href="http://www.cis.tugraz.at/igi/aschwaig/software.html">here</a> to run the <code>demThreeFive</code> example which compares with <a href="http://svmlight.joachims.org/">SVM light</a> version 5.00.
+
+<h2>Examples</h2>
+
+<p>The toy data example in the papers can be recreated using:
+
+<p><code>
+&gt;&gt; demUnlabelled1
+</code>
+
+<p>and leads to the decision boundary given below. A standard IVM based classifier can be run on the data using
+<p>
+<code>
+&gt;&gt; dem
+<p><center><img src="demUnlabelled1.png" width ="45%"><img src="demProbit1.png" width="45%"><br>
+The null category noise model run on toy data. <i>Left</i>: using the null category, the true nature of the decision boundary is recovered. <i>Right</i>: the standard Gaussian process, does not recover the true decision boundary.</center>
+
+<p>The other USPS digit classification example given in the NIPS paper can be re-run with:
+<p>
+<code>
+&gt;&gt; demThreeFive
+</code>
+
+<p>Be aware that this code can take some time to run. The results, in the form of averaged area under ROC curve against probability of missing label, can be plotted using
+
+<p>
+<code>
+&gt;&gt; demThreeFiveResults
+</code>
+<center><image src="demThreeFive.png" width=50%><br>Plot of average area under ROC curve against probability of label being present. The red line is the standard IVM based classifier, the blue dotted line is the null category noise model based classifier, the green dash-dot line is the a normal SVM and the mauve dashed line is the transductive SVM.
+</center>
+
+</body>
+</html>

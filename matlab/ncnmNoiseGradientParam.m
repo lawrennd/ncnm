@@ -1,6 +1,19 @@
 function g = ncnmNoiseGradientParam(noise, mu, varsigma, y)
 
-% NCNMNOISEGRADIENTPARAM Gradient of the null category noise model's parameters.
+% NCNMNOISEGRADIENTPARAM Gradient of parameters for NCNM.
+% FORMAT
+% DESC Computes the gradient of the log likelihood with respect to
+% the null category noise model's parameters.
+% ARG noise : structure containing the noise model.
+% ARG mu : input means to the noise model.
+% ARG varsigma : input variances to the noise model.
+% ARG y : target values for the noise model.
+% RETURN g : gradients of the log likelihood with respect to each
+% of the parameters. See ncnmNoiseExtractParam for the ordering.
+% 
+% SEEALSO : ncnmNoiseExtractParam, ncnmNoiseLogLikelihood, noiseGradientParam
+%
+% COPYRIGHT : Neil D. Lawrence, 2004, 2005, 2006
 
 % NCNM
 

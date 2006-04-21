@@ -1,11 +1,9 @@
-% DEMUNLABELLED1 Test IVM code on a toy feature selection
+% DEMUNLABELLED1 Test IVM code on a toy crescent data.
+%
+% Recreates the toy crescent data example shown in the NIPS paper.
 
 % NCNM 
 
-% Relies on IVM toolbox vs 0.23.
-%/~
-importTool('ivm');
-%~/
 
 randn('seed', 1e6)
 rand('seed', 1e6)

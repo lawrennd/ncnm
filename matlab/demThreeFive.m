@@ -13,10 +13,16 @@ randn('seed', 1e5);
 
 dataSetName = 'threeFive';
 
-[y, X, yTest, XTest] = ncnmLoadData(dataSetName);
+[X, y, XTest, yTest] = ncnmLoadData(dataSetName);
 
 % IVM Set up
 dVal = 200;
+
+optionsIvm = ivmOptions;
+optionsIvm.display = 0;
+optionsIvm.kernIters = 400;
+optionsIvm.extIters = 15;
+
 display = 0;
 innerIters = 400;
 outerIters = 15;
@@ -36,6 +42,7 @@ prior.a = 1;
 prior.b = 1;
 num = 6;
 probLabelled = [0.2 0.1 0.05 0.025 0.0125];
+
 for i = 1:10
   for j = 1:length(probLabelled)
     rand('seed', i*1e5);
@@ -57,9 +64,9 @@ for i = 1:10
                 min([dVal length(ylab)]));
     model.noise.bias = 0;
     % Optimise the IVM but don't change noise params.
-    model = ivmOptimise(model, 0, display, innerIters, outerIters, 0);
+    model = ivmOptimise(model, optionsIvm)
     % Select data-points in an IVM with those kernel parameters.
-    model = ivmOptimiseIVM(model, display);
+    model = ivmOptimiseIVM(model, optionsIvm.display);
     % Display the final model.
     ivmDisplay(model);
     [mu, varSigma] = ivmPosteriorMeanVar(model, XTest);
@@ -80,9 +87,9 @@ for i = 1:10
     prior.index = 1;
     model.kern.comp{2}.priors(1) = prior;
     % Optimise the NCNM but don't change noise params.
-    model = ivmOptimise(model, 0, display, innerIters, outerIters, 0);
+    model = ivmOptimise(model, optionsIvm);
     % Select data-points in an NCNM with those kernel parameters.
-    model = ivmOptimiseIVM(model, display);
+    model = ivmOptimiseIVM(model, optionsIvm.display);
     % Display the final model.
     ivmDisplay(model);
     [mu, varSigma] = ivmPosteriorMeanVar(model, XTest);

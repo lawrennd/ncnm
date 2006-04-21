@@ -1,8 +1,5 @@
 % DEMUNLABELLED2 Test IVM code on a toy feature selection
 
-%/~
-importTool('ivm', 0.221);
-%~/
 
 randn('seed', 1e6)
 rand('seed', 1e6)
@@ -33,7 +30,7 @@ prior.b = 1;
 prior.index = 2;
 model.kern.comp{1}.priors(1) = prior;
 
-for i = 1:5
+for i = 1:15
 
   % Plot the data.
   if display > 1
@@ -42,14 +39,14 @@ for i = 1:5
   % Select the active set.
   model = ivmOptimiseIVM(model, display);
   % Optimise the kernel parameters.
-  model = ivmOptimiseKernel(model, 0, display, 100);
+  model = ivmOptimiseKernel(model, display, 100);
   if display > 1
     ncnmTwoDPlot(model, i);
   end
   % Select the active set.
   model = ivmOptimiseIVM(model, display);
   % Optimise the noise model parameters.
-  model = ivmOptimiseNoise(model, 0, display, 100);
+  model = ivmOptimiseNoise(model, display, 100);
 
 end
 if display > 1

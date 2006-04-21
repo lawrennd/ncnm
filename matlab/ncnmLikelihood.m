@@ -1,6 +1,18 @@
 function L = ncnmLikelihood(noise, mu, varsigma, y)
 
 % NCNMLIKELIHOOD Likelihood of data under null category noise model.
+% FORMAT
+% DESC returns the likelihood of a set of targets under a given
+% NCNM noise model with process mean and variances provided.
+% ARG noise : the noise model structure.
+% ARG mu : the mean input into the noise model.
+% ARG sigma : the variance input into the noise model.
+% ARG y : the targets whose likelihoods are being predicted.
+% RETURN L : vector of a likelihood for each of the targets.
+% 
+% SEEALSO : noiseLikelihood, ncnmLogLikelihood
+%
+% COPYRIGHT : Neil D. Lawrence, 2004, 2005, 2006
 
 % NCNM
 

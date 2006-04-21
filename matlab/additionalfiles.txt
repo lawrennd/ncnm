@@ -1,0 +1,9 @@
+# These are files that should be packaged for the IVM software
+dir: .
+~/mlprojects/ncnm/matlab/usps_train.mat
+~/mlprojects/ncnm/matlab/usps_test.mat
+dir: html
+~/mlprojects/ncnm/html/index.html
+~/mlprojects/ncnm/html/demUnlabelled1.png
+~/mlprojects/ncnm/html/demProbit1.png
+~/mlprojects/ncnm/html/demThreeFive.png

@@ -1,4 +1,7 @@
 % DEMTHREEFIVERESULTS Plot results from the three vs five experiments.
+% 
+% Recreates the three versus five classification experiments
+% presented in the NIPS paper.
 
 % NCNM
 

@@ -1,4 +1,6 @@
-% DEMPROBIT1 Test IVM code on a toy feature selection
+% DEMPROBIT1 Test IVM code on a toy crescent data.
+%
+% Recreates the IVM based GPC solution to the toy crescent data.
 
 % NCNM
 

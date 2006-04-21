@@ -1,6 +1,25 @@
 function [dlnZ_dmu, dlnZ_dvs] = ncnmNoiseGradVals(noise, mu, varsigma, y)
 
-% NCNMNOISEGRADVALS Gradient wrt mu and varsigma of log-likelihood for null category noise model.
+% NCNMNOISEGRADVALS Compute gradient with respect to inputs to noise model.
+% FORMAT
+% DESC computes the gradient of the log-likelihood with respect to the
+% input mean, mu, and the input variance, varsigma for null category
+% noise model. These can be used in the computation of the updates
+% for nu and g in the IVM algorithm (or EP).
+% ARG noise : the noise structure for which gradients are computed.
+% ARG mu : the input mean positions where gradients are computed.
+% ARG varsigma : the input variance positions for which gradients
+% are computed.
+% ARG y : the target positions for which gradients are computed.
+% RETURN dlnZ_dmu : the gradient of the log likelihood with respect
+% to the means.
+% RETURN dlnZ_dvs : the gradient of the log likelihood with respect
+% to the variances.
+% 
+% SEEALSO : noiseUpdateNuG, noiseGradVals, nsnmNoiseNuG
+%
+% COPYRIGHT : Neil D. Lawrence, 2004, 2005, 2006
+
 
 % NCNM
 

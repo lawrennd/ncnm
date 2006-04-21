@@ -1,6 +1,24 @@
 function noise = ncnmNoiseParamInit(noise, y)
 
 % NCNMNOISEPARAMINIT null category noise model's parameter initialisation.
+% The null category noise model enables semi-supervised learning
+% with Gaussian processes. The approach is described in a 2004 NIPS
+% paper by Lawrence and Jordan.
+%
+% FORMAT 
+% DESC initialises the parameters of the null category noise model.
+% ARG noise : the structure to initialise.
+% ARG y : a set of target values.
+% RETURN noise : the initialised noise structure.
+%
+% FORMAT 
+% DESC initialises the parameters of the null category noise model.
+% ARG noise : the structure to initialise.
+% RETURN noise : the initialised noise structure.
+%
+% SEEALSO : noiseParamInit, noiseCreate
+%
+% COPYRIGHT : Neil D. Lawrence, 2004, 2005, 2006
 
 % NCNM
 

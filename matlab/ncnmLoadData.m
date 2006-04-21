@@ -1,6 +1,32 @@
 function [X, y, XTest, yTest] = ncnmLoadData(dataSet,seedVal)
 
 % NCNMLOADDATA Load a dataset.
+% FORMAT
+% DESC loads particular data set for use with NCNM demos.
+% ARG datasetName : the name of the data set to load.
+% RETURN X : input values for data.
+% RETURN y : target values for data.
+%
+% FORMAT
+% DESC loads particular data set for use with NCNM demos
+% initialising with a given random seed.
+% ARG datasetName : the name of the data set to load.
+% ARG seedVal : seed value to initialise with when generating data.
+% RETURN X : input values for data.
+% RETURN y : target values for data.
+%
+% FORMAT
+% DESC loads particular data set for use with NCNM demos, this
+% version will return test data as well as training data.
+% ARG datasetName : the name of the data set to load.
+% RETURN X : input values for data.
+% RETURN y : target values for data.
+% RETURN XTest : test input values for data.
+% RETURN yTest : test target values for data.
+%
+% SEEALSO : mapLoadData, demThreeFive, demUnlabelled1, demProbit1
+%
+% COPYRIGHT : Neil D. Lawrence, 2004, 2005, 2006
 
 % NCNM
 
@@ -16,10 +42,10 @@ prob = str2num(prob(2:end));
 switch dataSetStub
   case 'threeFive'
    
-   load ../data/usps_train
+   load usps_train
    X = ALL_DATA;
    y = ALL_T;
-   load ../data/usps_test
+   load usps_test
    XTest = ALL_DATA;
    yTest = ALL_T;
    classTrue = 3;
@@ -35,10 +61,10 @@ switch dataSetStub
    yTest = (yTest == classTrue)*2 - 1;
   case 'fourNine'
    
-   load ../data/usps_train
+   load usps_train
    X = ALL_DATA;
    y = ALL_T;
-   load ../data/usps_test
+   load usps_test
    XTest = ALL_DATA;
    yTest = ALL_T;
    classTrue = 4;
@@ -53,18 +79,18 @@ switch dataSetStub
    y = (y == classTrue)*2 - 1;
    yTest = (yTest == classTrue)*2 - 1;
  case 'thorsten'
-  [y, X] = svmlread('../data/example2/train_transduction.dat');
-  [yTest, XTest] = svmlread('../data/example2/test.dat');
+  [y, X] = svmlread('example2/train_transduction.dat');
+  [yTest, XTest] = svmlread('example2/test.dat');
 
  case 'usps'
-  load ../data/usps_train
+  load usps_train
   X = ALL_DATA;
   range =  min(ALL_T):max(ALL_T);
   for i = 1:length(range)
     y(:, i) = (ALL_T == range(i))*2 - 1;
   end
   if nargout > 2
-    load ../data/usps_test
+    load usps_test
     XTest = ALL_DATA;
     range =  min(ALL_T):max(ALL_T);
     for i = 1:length(range)
@@ -75,14 +101,14 @@ switch dataSetStub
   y(indUnlabelled, :) = NaN;
  case {'usps0', 'usps1', 'usps2', 'usps3', 'usps4', 'usps5', 'usps6', 'usps7', 'usps8', 'usps9'}
   digitNo = str2num(dataSetStub(end));
-  load ../data/usps_train
+  load usps_train
   X = ALL_DATA;
   range =  min(ALL_T):max(ALL_T);
   for i = 1:length(range)
     y(:, i) = (ALL_T == range(i))*2 - 1;
   end
   if nargout > 2
-    load ../data/usps_test
+    load usps_test
     XTest = ALL_DATA;
     range =  min(ALL_T):max(ALL_T);
     for i = 1:length(range)
