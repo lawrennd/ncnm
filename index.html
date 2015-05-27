@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ncnm by lawrennd</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ncnm</h1>
+        <p>Null category noise model for semi-supervised learning.</p>
+
+        <p class="view"><a href="https://github.com/lawrennd/ncnm">View the Project on GitHub <small>lawrennd/ncnm</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/lawrennd/ncnm/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/lawrennd/ncnm/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/lawrennd/ncnm">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="ncnm-software" class="anchor" href="#ncnm-software" aria-hidden="true"><span class="octicon octicon-link"></span></a>NCNM Software</h1>
+
+<p>Note that there is a C++ version of the NCNM available within the IVM
+C++ toolbox available <a href="/ivmcpp/">here</a>.</p>
+
+<h3>
+<a id="release-information" class="anchor" href="#release-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>Release Information</h3>
+
+<p>Current release is 0.11.</p>
+
+<p>There are several other toolboxes you need to download and have in your
+path these are:</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Toolbox</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/ivm/downloadFiles/">IVM</a></td>
+<td>0.33</td>
+</tr>
+<tr>
+<td><a href="/kern/downloadFiles/">KERN</a></td>
+<td>0.141</td>
+</tr>
+<tr>
+<td><a href="/noise/downloadFiles/">NOISE</a></td>
+<td>0.13</td>
+</tr>
+<tr>
+<td><a href="/ndlutil/downloadFiles/">NDLUTIL</a></td>
+<td>0.141</td>
+</tr>
+<tr>
+<td><a href="/optimi/downloadFiles/">OPTIMI</a></td>
+<td>0.13</td>
+</tr>
+<tr>
+<td><a href="/prior/downloadFiles/">PRIOR</a></td>
+<td>0.13</td>
+</tr>
+<tr>
+<td><a href="/datasets/downloadFiles/">DATASETS</a></td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
+
+<p>Finally you will also need the <a href="http://www.aston.ac.uk/eas/research/groups/ncrg/resources/netlab/">NETLAB
+toolbox</a> in your path and
+Anton Schwaighofer's SVM light MATLAB interface, available
+<a href="/svml_toolbox.html">here</a> to run the
+<code>demThreeFive</code> example which compares with <a href="http://svmlight.joachims.org/">SVMlight</a> version 5.00.</p>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>The toy data example in the papers can be recreated using:</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">&gt;&gt; </span>demUnlabelled1</pre></div>
+
+<p>and leads to the decision boundary given below. A standard IVM based
+classifier can be run on the data using</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">&gt;&gt; </span>dem</pre></div>
+
+<p><img src="demUnlabelled1.png" alt=""><img src="demProbit1.png" alt="">\
+ The null category noise model run on toy data. <em>Left</em>: using the null
+category, the true nature of the decision boundary is recovered.
+<em>Right</em>: the standard Gaussian process, does not recover the true
+decision boundary.
+The other USPS digit classification example given in the NIPS paper can
+be re-run with:</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">&gt;&gt; </span>demThreeFive</pre></div>
+
+<p>Be aware that this code can take some time to run. The results, in the
+form of averaged area under ROC curve against probability of missing
+label, can be plotted using</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">&gt;&gt; </span>demThreeFiveResults</pre></div>
+
+<p>Plot of average area under ROC curve against probability of label being
+present. The red line is the standard IVM based classifier, the blue
+dotted line is the null category noise model based classifier, the green
+dash-dot line is the a normal SVM and the mauve dashed line is the
+transductive SVM.</p>
+
+<p>Page last modified on Fri Jan 5 12:47:39 GMT 2007.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/lawrennd">lawrennd</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-62968536-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
