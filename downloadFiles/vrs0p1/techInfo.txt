@@ -1,0 +1,34 @@
+
+
+
+
+ [X, y] = generateCrescentData(numDataPart);
+
+ y = lnCumGaussSum(u1, u2, w1, w2)
+
+ L = ncnmLikelihood(noise, mu, varsigma, y)
+
+ [y, X, yTest, XTest] = ncnmLoadData(dataset)
+
+ L = ncnmLogLikelihood(noise, mu, varsigma, y)
+
+ ncnmNoiseDisplay(noise)
+
+ noise = ncnmNoiseExpandParam(noise, params)
+
+ [params, names] = ncnmNoiseExtractParam(noise)
+
+ [dlnZ_dmu, dlnZ_dvs] = ncnmNoiseGradVals(noise, mu, varsigma, y)
+
+ g = ncnmNoiseGradientParam(noise, mu, varsigma, y)
+
+ [g, nu] = ncnmNoiseNuG(noise, mu, varSigma, y)
+
+ y = ncnmNoiseOut(noise, mu, varsigma)
+
+ noise = ncnmNoiseParamInit(noise, y)
+
+ [m, beta] = ncnmNoiseSites(noise, g, nu, mu, varSigma, y)
+
+ ncnmTwoDPlot(model, iter, X, y)
+

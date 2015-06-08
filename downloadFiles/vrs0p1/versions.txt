@@ -1,0 +1,21 @@
+File versionlist for the NCNM toolbox version 0.1 Friday, June 4, 2004 at 13:28:21
+
+demProbit1.m	 vs 1.1	 Tue May 25 21:44:36 2004
+demThreeFive.m	 vs 1.3	 Fri Jun  4 12:18:35 2004
+demThreeFiveResults.m	 vs 1.1	 Wed May 26 14:50:15 2004
+demUnlabelled1.m	 vs 1.2	 Tue May 25 21:35:43 2004
+generateCrescentData.m	 vs 1.1	 Thu May 13 08:38:54 2004
+lnCumGaussSum.m	 vs 1.1	 Fri Jun  4 12:25:28 2004
+ncnmLikelihood.m	 vs 1.1	 Mon May 17 20:14:13 2004
+ncnmLoadData.m	 vs 1.2	 Tue May 25 18:27:26 2004
+ncnmLogLikelihood.m	 vs 1.3	 Fri Jun  4 12:24:25 2004
+ncnmNoiseDisplay.m	 vs 1.1	 Mon May 17 20:14:13 2004
+ncnmNoiseExpandParam.m	 vs 1.2	 Fri May 21 06:38:08 2004
+ncnmNoiseExtractParam.m	 vs 1.2	 Fri May 21 06:38:32 2004
+ncnmNoiseGradVals.m	 vs 1.2	 Tue May 25 06:36:19 2004
+ncnmNoiseGradientParam.m	 vs 1.2	 Tue May 25 06:34:59 2004
+ncnmNoiseNuG.m	 vs 1.2	 Tue May 25 06:40:19 2004
+ncnmNoiseOut.m	 vs 1.1	 Thu May 13 04:37:43 2004
+ncnmNoiseParamInit.m	 vs 1.2	 Mon May 24 23:14:40 2004
+ncnmNoiseSites.m	 vs 1.1	 Tue May 18 23:28:42 2004
+ncnmTwoDPlot.m	 vs 1.2	 Tue May 25 21:38:56 2004
